@@ -11,6 +11,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//Routes
 app.use("/api", routes);
 
 app.listen(process.env.PORT, () => {
