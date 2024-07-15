@@ -1,6 +1,5 @@
 const axios = require("axios");
 const getTimestamp = require("../utils/timestamp");
-const fs = require("fs");
 
 //Intiate STK push
 const intiateSTKPush = async (req, res) => {
