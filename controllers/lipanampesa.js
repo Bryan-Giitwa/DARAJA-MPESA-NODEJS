@@ -1,5 +1,6 @@
 const axios = require("axios");
 const getTimestamp = require("../utils/timestamp");
+const fs = require("fs");
 
 //Intiate STK push
 const intiateSTKPush = async (req, res) => {
@@ -29,7 +30,8 @@ const intiateSTKPush = async (req, res) => {
         PartyA: `254${phone}`,
         PartyB: shortCode,
         PhoneNumber: `254${phone}`,
-        CallBackURL: "https://daraja.herokuapp.com/api/v1/stk-push/status",
+        CallBackURL:
+          "https://f16d-102-215-32-221.ngrok-free.app/api/stkCallback",
         AccountReference: "daraja",
         TransactionDesc: "Testing stk push",
       },
@@ -47,4 +49,10 @@ const intiateSTKPush = async (req, res) => {
   }
 };
 
-module.exports = intiateSTKPush;
+//STK Callback that will be called by Safaricom and confirm the payment then consoles out the response
+const stkCallback = (req, res) => {
+  const callback = req.body;
+  console.log(callback);
+};
+
+module.exports = { intiateSTKPush, stkCallback };
