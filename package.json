@@ -1,0 +1,19 @@
+{
+  "name": "daraja-mpesa-nodejs",
+  "version": "1.0.0",
+  "description": "In this project, I'll be exploring Mpesa API integration with Nodejs. Mpesa is a mobile payment platform used in Kenya, and integrating it with your web application can provide your users with a seamless payment experience.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
