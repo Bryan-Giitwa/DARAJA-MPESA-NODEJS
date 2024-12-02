@@ -19,7 +19,7 @@ const intiateSTKPush = async (req, res) => {
 
   try {
     const response = await axios.post(
-      "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
+      "https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
       {
         BusinessShortCode: shortCode,
         Password: password,
@@ -30,7 +30,7 @@ const intiateSTKPush = async (req, res) => {
         PartyB: shortCode,
         PhoneNumber: `254${phone}`,
         CallBackURL:
-          "https://f16d-102-215-32-221.ngrok-free.app/api/stkCallback",
+          "https://04d3-196-250-215-152.ngrok-free.app/api/stkCallback",
         AccountReference: "daraja",
         TransactionDesc: "Testing stk push",
       },

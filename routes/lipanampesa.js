@@ -9,6 +9,6 @@ router.get("/", (req, res) => {
 });
 
 router.post("/stk-push", getToken, intiateSTKPush); //intiateSTKPush will be called after getToken middleware
-router.post("/stkCallback", stkCallback); //Route to get the callbac data from safaricom
+router.post("/stkCallback", stkCallback); //Route to get the callback data from safaricom
 
 module.exports = router;
