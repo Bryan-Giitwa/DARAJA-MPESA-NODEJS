@@ -3,7 +3,7 @@ const getTimestamp = require("../utils/timestamp");
 
 //Intiate STK push
 const intiateSTKPush = async (req, res) => {
-  const phone = req.body.phone.substring(1);
+  const phone = req.body.phone;
   const amount = req.body.amount;
 
   const token = req.access_token;
@@ -31,7 +31,7 @@ const intiateSTKPush = async (req, res) => {
         PhoneNumber: `254${phone}`,
         CallBackURL:
           "https://04d3-196-250-215-152.ngrok-free.app/api/stkCallback",
-        AccountReference: "daraja",
+        AccountReference: "TEST",
         TransactionDesc: "Testing stk push",
       },
       {

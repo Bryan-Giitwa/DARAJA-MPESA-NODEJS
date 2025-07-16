@@ -3,9 +3,14 @@ const router = express.Router();
 const getToken = require("../middlewares/generateAccessToken");
 const { intiateSTKPush, stkCallback } = require("../controllers/lipanampesa");
 
-//Route to test if the server is working
+// Route to test if the server is working
 router.get("/", (req, res) => {
   res.send("Hello From Daraja Api");
+});
+
+// Route to get the access token
+router.get("/get-token", getToken, (req, res) => {
+  res.send({ access_token: req.access_token });
 });
 
 router.post("/stk-push", getToken, intiateSTKPush); //intiateSTKPush will be called after getToken middleware
