@@ -94,45 +94,6 @@ Initiates an STK push request to the user's phone for payment.
 }
 ```
 
-### 4. STK Callback
-
-**POST** `/stkCallback`
-
-Webhook endpoint that receives payment confirmation from Safaricom.
-
-**Note:** This endpoint is called automatically by Safaricom's servers after a payment attempt.
-
-**Request Body Example:**
-
-```json
-{
-  "Body": {
-    "stkCallback": {
-      "MerchantRequestID": "29115-34620561-1",
-      "CheckoutRequestID": "ws_CO_191220191020363925",
-      "ResultCode": 0,
-      "ResultDesc": "The service request is processed successfully.",
-      "CallbackMetadata": {
-        "Item": [
-          {
-            "Name": "Amount",
-            "Value": 5
-          },
-          {
-            "Name": "MpesaReceiptNumber",
-            "Value": "NLJ7RT61SV"
-          },
-          {
-            "Name": "PhoneNumber",
-            "Value": 254703816487
-          }
-        ]
-      }
-    }
-  }
-}
-```
-
 ## Phone Number Format
 
 The API accepts phone numbers in the following formats:
@@ -152,34 +113,3 @@ PASSKEY=your_passkey
 SECRET_KEY=your_secret_key
 CONSUMER_KEY=your_consumer_key
 ```
-
-## Usage Example
-
-```bash
-# Start the server
-npm start
-
-# Test STK Push
-curl -X POST http://localhost:8000/api/stk-push \
-  -H "Content-Type: application/json" \
-  -d '{
-    "phone": "703816487",
-    "amount": 5
-  }'
-```
-
-## Error Handling
-
-The API includes comprehensive error handling for:
-
-- Invalid phone number formats
-- Missing required parameters
-- Invalid amounts (must be > 0)
-- Safaricom API errors
-- Network connectivity issues
-
-## Security Notes
-
-- Access tokens are automatically generated and refreshed
-- All sensitive credentials are stored in environment variables
-- The callback URL should be publicly accessible for production use

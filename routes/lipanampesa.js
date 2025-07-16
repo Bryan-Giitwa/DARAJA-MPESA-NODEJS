@@ -5,7 +5,7 @@ const { intiateSTKPush, stkCallback } = require("../controllers/lipanampesa");
 
 // Route to test if the server is working
 router.get("/", (req, res) => {
-  res.send("Hello From Daraja Api");
+  res.send("TUNAUNDA MPESA API");
 });
 
 // Route to get the access token
