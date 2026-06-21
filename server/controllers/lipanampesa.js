@@ -11,7 +11,7 @@ const generateAccountReference = () => {
   const randomNum = Math.floor(Math.random() * 10000)
     .toString()
     .padStart(2, "0");
-  return `DONATION-CLINIC-${year}-${randomNum}`;
+  return `THANK-YOU-@-${year}-${randomNum}`;
 };
 
 const intiateSTKPush = async (req, res) => {
