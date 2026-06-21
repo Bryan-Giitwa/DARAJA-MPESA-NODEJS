@@ -116,7 +116,6 @@ function STKPush() {
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div>
             <h1 className="text-xl font-bold text-gray-900">M-Pesa Express</h1>
-            <p className="text-sm text-gray-600">Payments dashboard</p>
           </div>
         </div>
       </header>
@@ -126,10 +125,6 @@ function STKPush() {
         <h2 className="text-3xl font-bold text-gray-900 mb-2">
           Send a payment prompt
         </h2>
-        <p className="text-gray-600 mb-8">
-          Push a payment request directly to a customer's phone and watch the
-          transaction settle in real time.
-        </p>
 
         {/* Form */}
         <div className="border-b border-gray-200 pb-8 mb-8">
