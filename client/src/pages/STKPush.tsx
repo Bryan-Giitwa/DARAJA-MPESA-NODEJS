@@ -224,7 +224,7 @@ function STKPush() {
                   <thead>
                     <tr className="border-b border-gray-200">
                       <th className="px-4 py-3 text-left font-semibold text-gray-900 text-xs">
-                        #
+                        ID
                       </th>
                       <th className="px-4 py-3 text-left font-semibold text-gray-900 text-xs">
                         CUSTOMER
@@ -256,9 +256,6 @@ function STKPush() {
                           </td>
                           <td className="px-4 py-4">
                             <div className="flex items-center gap-2">
-                              <div className="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center text-teal-700 font-semibold text-xs">
-                                {t.phone_number.substring(0, 2).toUpperCase()}
-                              </div>
                               <div>
                                 <p className="font-medium text-gray-900">
                                   {t.phone_number}

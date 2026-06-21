@@ -1,7 +1,10 @@
 const axios = require("axios");
 const getTimestamp = require("../utils/timestamp");
 const db = require("../utils/db");
-const { handleStkError } = require("../middlewares/handleStkError");
+const {
+  handleStkError,
+  DELETE_RECORD_CODES,
+} = require("../middlewares/handleStkError");
 
 const generateAccountReference = () => {
   const year = new Date().getFullYear();
@@ -55,8 +58,7 @@ const intiateSTKPush = async (req, res) => {
         PartyA: formattedPhone,
         PartyB: shortCode,
         PhoneNumber: formattedPhone,
-        CallBackURL:
-          "https://uninfringed-divinable-johnette.ngrok-free.dev/api/stkCallback",
+        CallBackURL: `${process.env.CALLBACK_URL}/api/stkCallback`,
         AccountReference: accountReference,
         TransactionDesc: "Testing stk push",
       },
@@ -108,10 +110,28 @@ const stkCallback = async (req, res) => {
     } = stkCallback;
 
     if (ResultCode !== 0) {
+      if (
+        Array.isArray(DELETE_RECORD_CODES) &&
+        DELETE_RECORD_CODES.includes(ResultCode)
+      ) {
+        try {
+          await db.execute(
+            "DELETE FROM transactions WHERE merchant_request_id = ? AND checkout_request_id = ? AND status = ?",
+            [MerchantRequestID, CheckoutRequestID, "pending"],
+          );
+          console.log(
+            `Deleted pending transaction for error code ${ResultCode}`,
+          );
+        } catch (dbErr) {
+          console.error("Failed to delete pending transaction:", dbErr.message);
+        }
+      }
+
       await handleStkError(ResultCode, ResultDesc, {
         merchantRequestId: MerchantRequestID,
         checkoutRequestId: CheckoutRequestID,
       });
+
       return res.status(200).json({
         success: false,
         message: ResultDesc,
